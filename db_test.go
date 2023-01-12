@@ -1,18 +1,17 @@
-package db_test
+package lib_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-
-	. "github.com/yusupovanton/shared/db"
+	"github.com/yusupovanton/shared"
 )
 
 func TestDbActions(t *testing.T) {
 
 	t.Parallel()
 	
-	db, err := ConnectToDB()
+	db, err := lib.ConnectToDB()
 
 	require.NotNil(t, db)
 	require.NoError(t, err)

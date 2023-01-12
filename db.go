@@ -1,4 +1,4 @@
-package db
+package lib
 
 import (
 	"database/sql"
@@ -12,11 +12,6 @@ import (
 	"gorm.io/gorm"
 )
 
-func errorCheck(err error) {
-	if err != nil {
-		log.Printf("An error occured in the db module: %v", err)
-	}
-}
 
 func init() {
 	err := godotenv.Load(os.Getenv("ENV_FILE_LOCATION"))

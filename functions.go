@@ -1,4 +1,4 @@
-package functions
+package lib
 
 import (
 	"database/sql"
@@ -6,18 +6,13 @@ import (
 	"log"
 	"os"
 
-	. "github.com/yusupovanton/shared/resources"
 
 	telegraph "github.com/StarkBotsIndustries/telegraph"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"gorm.io/gorm"
 )
 
-func errorCheck(err error) {
-	if err != nil {
-		log.Printf("There has been an error in the functions module: %v", err)
-	}
-}
+
 
 func PostAd(user *User, ad *Ad, db *gorm.DB) (uint, bool, error) {
 

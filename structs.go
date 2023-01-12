@@ -1,5 +1,4 @@
-// STRUCTS
-package resources
+package lib
 
 import (
 	"time"
