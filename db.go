@@ -7,19 +7,11 @@ import (
 
 	"os"
 
-	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-
-func init() {
-	err := godotenv.Load(os.Getenv("ENV_FILE_LOCATION"))
-	errorCheck(err)
-
-}
-
-func mustGetEnv(envName string) string {
+func MustGetEnv(envName string) string {
 
 	envVal := os.Getenv(envName)
 	if envVal == "" {
@@ -31,7 +23,7 @@ func mustGetEnv(envName string) string {
 func ConnectToDB() (*gorm.DB, error) {
 
 	dbURI := fmt.Sprintf("user=%s password=%s database=%s host=%s",
-		mustGetEnv("DB_USER"), mustGetEnv("DB_PASS"), mustGetEnv("DB_NAME"), os.Getenv("INSTANCE_UNIX_SOCKET"))
+		MustGetEnv("DB_USER"), MustGetEnv("DB_PASS"), MustGetEnv("DB_NAME"), os.Getenv("INSTANCE_UNIX_SOCKET"))
 	dbPool, err := sql.Open("pgx", dbURI)
 	db, err := gorm.Open(postgres.New(postgres.Config{Conn: dbPool}), &gorm.Config{})
 

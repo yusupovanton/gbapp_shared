@@ -1,16 +1,15 @@
 package lib
 
 import (
-	"fmt"
 	"log"
 )
 
 func errorCheck(err error) {
 	if err != nil {
-		log.Printf("There has been an error in the functions module: %v", err)
+		log.Printf("There has been an error in the lib module: %v", err)
 	}
 }
 
 func init() {
-	fmt.Println("[go-lib] initializing ...")
+	log.Println("lib initializing ...")
 }
