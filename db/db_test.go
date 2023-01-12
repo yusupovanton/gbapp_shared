@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	
-	. "shared/db"
+
+	. "github.com/yusupovanton/shared/db"
 )
 
 func TestDbActions(t *testing.T) {

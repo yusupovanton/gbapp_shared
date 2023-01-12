@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	. "shared/resources"
+	. "github.com/yusupovanton/shared/resources"
 
 	telegraph "github.com/StarkBotsIndustries/telegraph"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
