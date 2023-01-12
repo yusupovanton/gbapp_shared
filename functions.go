@@ -12,8 +12,6 @@ import (
 	"gorm.io/gorm"
 )
 
-
-
 func PostAd(user *User, ad *Ad, db *gorm.DB) (uint, bool, error) {
 
 	success := true
@@ -150,7 +148,7 @@ func CreateTelegraphPage(ad *Ad) *telegraph.Page {
 		url = fmt.Sprintf("https://storage.googleapis.com/gotgbot_bucket/%v", id)
 		images = images + fmt.Sprintf(`<img src="%v" width="500" height="600">`, url)
 	}
-
+	log.Printf("%v", images)
 	htmlData := fmt.Sprintf(`%v<h1>%v</h1><h2>%v</h2><b>%v</b><p>%v</p><u>%v</u>`,
 		images, ad.Title, ad.Location, ad.Contacts, ad.Description, ad.CreatedAt)
 

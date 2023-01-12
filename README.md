@@ -5,4 +5,6 @@
 Should connect DB with well-defined env variables.
 Env variables are used to connect the db with a socket or with hostname and user/pwd to a postgres server.
 
-
+#Required envs:
+1. TELEGRAPH_KEY
+2. 
