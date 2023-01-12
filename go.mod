@@ -1,4 +1,4 @@
-module github.com/yusupovanton/shared
+module github.com/yusupovanton/gbapp_shared
 
 go 1.19
 
