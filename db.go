@@ -23,15 +23,15 @@ func MustGetEnv(envName string) string {
 func ConnectToDB() (*gorm.DB, error) {
 
 	dbURI := fmt.Sprintf("user=%s password=%s database=%s host=%s",
-		MustGetEnv("DB_USER"), MustGetEnv("DB_PASS"), MustGetEnv("DB_NAME"), os.Getenv("INSTANCE_UNIX_SOCKET"))
+		os.Getenv("DB_USER"), os.Getenv("DB_PASS"), os.Getenv("DB_NAME"), os.Getenv("INSTANCE_UNIX_SOCKET"))
 	dbPool, err := sql.Open("pgx", dbURI)
 	db, err := gorm.Open(postgres.New(postgres.Config{Conn: dbPool}), &gorm.Config{})
 
 	if err != nil {
 
 		log.Println("SOCKET CONNECTION NOT AVAILABLE")
-		dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v sslmode=disable", 
-		os.Getenv("HOST_ADDRESS"), os.Getenv("DB_USER"), os.Getenv("DB_PASS"), os.Getenv("DB_NAME"))
+		dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v sslmode=disable",
+			os.Getenv("HOST_ADDRESS"), os.Getenv("DB_USER"), os.Getenv("DB_PASS"), os.Getenv("DB_NAME"))
 		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 		errorCheck(err)
 
