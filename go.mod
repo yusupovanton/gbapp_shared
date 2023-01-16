@@ -21,6 +21,7 @@ require (
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/joho/godotenv v1.4.0
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	gitlab.com/kingofsystem/telegram-bot-api/v5 v5.5.2
 	golang.org/x/crypto v0.4.0 // indirect
 	golang.org/x/net v0.3.0 // indirect
 	golang.org/x/text v0.5.0 // indirect
