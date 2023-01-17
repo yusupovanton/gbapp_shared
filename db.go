@@ -20,6 +20,7 @@ func MustGetEnv(envName string) string {
 
 	return envVal
 }
+
 func ConnectToDB() (*gorm.DB, error) {
 
 	dbURI := fmt.Sprintf("user=%s password=%s database=%s host=%s",
