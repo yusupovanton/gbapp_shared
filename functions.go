@@ -7,7 +7,7 @@ import (
 	"os"
 
 	telegraph "github.com/StarkBotsIndustries/telegraph"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	tgbotapi "gitlab.com/kingofsystem/telegram-bot-api/v5"
 	"gorm.io/gorm"
 )
 
