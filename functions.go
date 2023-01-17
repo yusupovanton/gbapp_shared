@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 
-
 	telegraph "github.com/StarkBotsIndustries/telegraph"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"gorm.io/gorm"
@@ -179,11 +178,10 @@ func CreateAdMessage(ad *Ad, modifyOpts bool) tgbotapi.MessageConfig {
 
 	msgRet.Text = markdownTemplate
 	msgRet.ParseMode = "markdown"
-	
+
 	// TODO: photo media group
 	// var medias []interface{}
 	// media1 := tgbotapi.NewInputMediaPhoto(tgbotapi.FileURL("http://example.com/test1.jpg"))
-
 
 	// mediaArr := append(medias, media1)
 	// var mediaGr = tgbotapi.MediaGroupConfig{ChatID: -1001515307140, Media: mediaArr}
