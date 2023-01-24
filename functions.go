@@ -84,7 +84,7 @@ func UpdateAd(ad *Ad, db *gorm.DB) (bool, error) {
 	return true, nil
 }
 
-func GetUser(user_id, db *gorm.DB) (*User) {
+func GetUser(user_id uint, db *gorm.DB) (*User) {
 
 	//1. gets state and ad ids by using the user id in the session table
 	//2. gets the state and current ad details by their ids
