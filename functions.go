@@ -84,52 +84,50 @@ func UpdateAd(ad *Ad, db *gorm.DB) (bool, error) {
 	return true, nil
 }
 
-func GetUser(user *User, db *gorm.DB) (*User, bool, error) {
+func GetUser(user_id, db *gorm.DB) (*User) {
 
 	//1. gets state and ad ids by using the user id in the session table
 	//2. gets the state and current ad details by their ids
-	var success = true
-	var err error
 
-	result := db.Table("gbapp_users").Last(&user, "id = ?", user.ID)
+	var err error
+	var user *User
+
+	result := db.Table("gbapp_users").Where("id = ?", user_id).Find(&user)
 
 	if result.Error == gorm.ErrRecordNotFound {
-		log.Printf("There is no user with the user_id %d", user.ID)
-		success = false
+		log.Printf("There is no user with the user_id %v", user_id)
 	} else if err != nil && err != gorm.ErrRecordNotFound {
 		log.Printf("An unexpected error while getting session from the database, %v", err)
-		success = false
 	}
 
-	return user, success, nil
+	return user
 }
 
-func GetAd(user *User, db *gorm.DB) (*Ad, bool, error) {
+func GetAd(ad_id uint, db *gorm.DB) (*Ad) {
 
-	var success = true
 	var err error
-	ad := new(Ad)
+	var ad *Ad
 
-	result := db.Table("gbapp_ads").Last(&ad, "ad_id = ?", user.CurrentAd)
+	result := db.Table("gbapp_ads").Where("ad_id = ?", ad_id).Last(&ad)
 
 	//Ad can be empty
 	if result.Error == gorm.ErrRecordNotFound {
 		err = nil
-		log.Printf("There is no current ad for the user %d", user.ID)
+		log.Printf("There is no ad for the ad_id %d", ad_id)
 	} else if err != nil && err != sql.ErrNoRows {
 		log.Printf("An unexpected error while getting ad from the database")
-		success = false
 	}
 
-	return ad, success, nil
+	return ad
 }
 
-func DeleteUser(user *User, db *gorm.DB) (bool, error) {
+func DeleteUser(user_id uint, db *gorm.DB) (bool, error) {
 
 	// Deletes rows by a user_id
 	var success = true
+	var user *User
 
-	result := db.Table("gbapp_users").Delete(&user)
+	result := db.Table("gbapp_users").Where("user_id = ?", user_id).Delete(&user)
 
 	if result.Error != nil {
 		success = false
