@@ -29,17 +29,18 @@ func PostAd(user *User, ad *Ad, db *gorm.DB) (uint, bool, error) {
 	return ad.ID, success, err
 }
 
-func CheckUser(user *User, db *gorm.DB) (bool, error) {
+func CheckUser(user_id uint, db *gorm.DB) (bool, error) {
 
 	var new = false
 
-	result := db.Table("gbapp_users").First(&user, 10)
+	result := db.Table("gbapp_users")
 
 	if result.Error == gorm.ErrRecordNotFound {
 		new = true
 	} else {
 		new = false
 	}
+
 	return new, nil
 }
 
