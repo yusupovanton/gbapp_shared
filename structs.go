@@ -20,16 +20,16 @@ type User struct {
 
 type Ad struct {
 	gorm.Model
-	User_id     uint           `redis:"user_id"`
-	Username    string         `redis:"username"`
-	Price       string         `redis:"price"`
-	Category    string         `redis:"category"`
-	Title       string         `redis:"title"`
-	Location    string         `redis:"location"`
-	Contacts    string         `redis:"contacts"`
-	Description string         `redis:"description"`
-	Post        bool           `redis:"post"`
-	Last_posted time.Time      `redis:"last_posted"`
-	Images      pq.StringArray `gorm:"type:string[]"`
-	Image_count uint           `redis:"image_count"`
+	User_id     uint           `json:"user_id" redis:"user_id"`
+	Username    string         `json:"username,omitempty" redis:"username"`
+	Price       string         `json:"price,omitempty" redis:"price"`
+	Category    string         `json:"category,omitempty" redis:"category"`
+	Title       string         `json:"title,omitempty" redis:"title"`
+	Location    string         `json:"location,omitempty" redis:"location"`
+	Contacts    string         `json:"contacts,omitempty" redis:"contacts"`
+	Description string         `json:"description,omitempty" redis:"description"`
+	Post        bool           `json:"post,omitempty" redis:"post"`
+	Last_posted time.Time      `json:"last_posted,omitempty" redis:"last_posted"`
+	Images      pq.StringArray `json:"images,omitempty" gorm:"type:string[]"`
+	Image_count uint           `json:"image_count,omitempty" redis:"image_count"`
 }
