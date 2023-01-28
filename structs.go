@@ -17,25 +17,19 @@ type User struct {
 	Password      string        `json:"password"`
 }
 
-// type State struct {
-// 	gorm.Model
-// 	Id        int
-// 	StateName string
-// 	Override  bool
-// 	Last_changed int64
-// }
 
 type Ad struct {
 	gorm.Model
-	User_id     uint   `redis:"user_id"`
-	Username    string `redis:"username"`
-	Price       string `redis:"price"`
-	Category    string `redis:"category"`
-	Title       string `redis:"title"`
-	Location    string `redis:"location"`
-	Contacts    string `redis:"contacts"`
-	Description string `redis:"description"`
-	Post        bool
-	Last_posted time.Time
+	User_id     uint           `redis:"user_id"`
+	Username    string         `redis:"username"`
+	Price       string         `redis:"price"`
+	Category    string         `redis:"category"`
+	Title       string         `redis:"title"`
+	Location    string         `redis:"location"`
+	Contacts    string         `redis:"contacts"`
+	Description string         `redis:"description"`
+	Post        bool           `redis:"post"`
+	Last_posted time.Time      `redis:"last_posted"`
 	Images      pq.StringArray `gorm:"type:string[]"`
+	Image_count uint           `redis:"image_count"`
 }
